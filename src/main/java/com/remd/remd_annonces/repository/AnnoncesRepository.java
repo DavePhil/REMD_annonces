@@ -10,9 +10,7 @@ import java.util.List;
 
 @Repository
 public interface AnnoncesRepository extends JpaRepository<Annonces, Long> {
-
     List<Annonces> findByIdUsers(Long idUsers);
-
-    @Query("select annonces from Annonces annonces where annonces.idUsers !=: idUsers")
+    @Query("select annonces from Annonces annonces where annonces.idUsers !=:idUsers")
     List<Annonces> findByNotIdUsers(@Param("idUsers") Long idUsers);
 }

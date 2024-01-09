@@ -9,4 +9,5 @@ public class Article {
     private String photo;
     private String description;
     private ArticleState state;
+    private Long idUser;
 }

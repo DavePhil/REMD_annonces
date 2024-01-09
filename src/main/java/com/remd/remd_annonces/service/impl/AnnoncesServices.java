@@ -52,4 +52,14 @@ public class AnnoncesServices implements IAnnoncesService {
         return new ResponseEntity<>(annonces,HttpStatus.OK);
 
     }
+
+    public Annonces create(String titre, String localisation, String date, Long idArticle, Long idUser) {
+        Annonces annonces = new Annonces();
+        annonces.setDate(date);
+        annonces.setLocalisation(localisation);
+        annonces.setTitre(titre);
+        annonces.setIdArticle(idArticle);
+        annonces.setIdUsers(idUser);
+        return annoncesRepository.save(annonces);
+    }
 }

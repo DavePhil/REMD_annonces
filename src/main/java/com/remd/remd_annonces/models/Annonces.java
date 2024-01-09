@@ -20,7 +20,7 @@ public class Annonces {
     @CreatedDate
     private Date createdDate = new Date();
     private String date;
-    private String heure;
+//    private String heure;
     private Long idArticle;
     private Long idUsers;
 
