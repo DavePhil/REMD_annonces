@@ -1,5 +1,7 @@
 package com.remd.remd_annonces.models;
 
+import com.remd.remd_annonces.Beans.Article;
+import com.remd.remd_annonces.Beans.Users;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
@@ -23,5 +25,7 @@ public class Annonces {
 //    private String heure;
     private Long idArticle;
     private Long idUsers;
+    @Transient
+    private Article article;
 
 }

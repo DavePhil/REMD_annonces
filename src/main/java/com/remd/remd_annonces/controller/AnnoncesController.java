@@ -49,15 +49,16 @@ public class AnnoncesController {
         return new ResponseEntity<>("Une erreur est survenue", HttpStatus.BAD_REQUEST);
     }
     ResponseEntity<?> _constructResponse(List<Annonces> annonces){
-        List<Map<String,Object>> _annonces = new ArrayList<>();
-        Map<String,Object> map = new HashMap<>();
+//        List<Map<String,Object>> _annonces = new ArrayList<>();
+//        Map<String,Object> map = new HashMap<>();
         for (Annonces annonce : annonces){
             Article article = articleProxy.findById(annonce.getIdArticle());
-            map.put("annonces", annonce);
-            map.put("article",article);
-            _annonces.add(map);
+//            map.put("annonces", annonce);
+//            map.put("article",article);
+            annonce.setArticle(article);
+//            _annonces.add(map);
         }
-        return new ResponseEntity<>(_annonces,HttpStatus.OK);
+        return new ResponseEntity<>(annonces,HttpStatus.OK);
     }
     @GetMapping("findbyUserId/{idUser}")
     public ResponseEntity<?> listAnnoncesByUser(@PathVariable("idUser")Long idUser){
