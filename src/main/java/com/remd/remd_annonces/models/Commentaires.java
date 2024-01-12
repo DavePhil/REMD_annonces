@@ -1,5 +1,6 @@
 package com.remd.remd_annonces.models;
 
+import com.remd.remd_annonces.Beans.Users;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.DynamicUpdate;
@@ -23,5 +24,7 @@ public class Commentaires {
     @CreatedDate
     private Date createdDate = new Date();
     private Long idUsers;
+    @Transient
+    private Users users;
 
 }

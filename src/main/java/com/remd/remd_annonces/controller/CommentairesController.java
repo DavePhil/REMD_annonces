@@ -9,10 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("annonces/")
@@ -31,14 +28,10 @@ public class CommentairesController {
     @GetMapping("commentaires/{idAnnonce}")
     public ResponseEntity<?> getByUser(@PathVariable("idAnnonce") Long idAnnonces){
         List<Commentaires> commentairesList = commentairesService.findByIdAnnonces(idAnnonces);
-        List<Map<String, Object>> response = new ArrayList<>();
-        Map<String, Object> map = new HashMap<>();
         for (Commentaires comment : commentairesList){
             Users users = userProxy.getById(comment.getIdUsers());
-            map.put("commentaires", comment);
-            map.put("users", users);
-            response.add(map);
+            comment.setUsers(users);
         }
-        return new ResponseEntity<>(response, HttpStatus.OK);
+        return new ResponseEntity<>(commentairesList, HttpStatus.OK);
     }
 }

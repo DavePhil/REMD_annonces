@@ -33,6 +33,13 @@ public class AnnoncesController {
                                     @RequestParam("localisation") String localisation, @RequestParam("date") String date,
                                     @RequestParam("idUser") Long idUser){
         ResponseEntity<?> article;
+        System.out.println(nom);
+        System.out.println(photo);
+        System.out.println(description);
+        System.out.println(titre);
+        System.out.println(localisation);
+        System.out.println(date);
+        System.out.println(idUser);
         try {
             article = articleProxy.create(nom, photo, description, idUser);
             if (article.getStatusCode()==HttpStatus.OK){
